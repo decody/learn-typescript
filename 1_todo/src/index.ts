@@ -1,28 +1,24 @@
-// type Todo = {
-//   id: number;
-//   title: string;
-//   done: boolean;
-// }
-
+// 할일아이템 타입 정의
 interface Todo {
   id: number;
   title: string;
   done: boolean;
 }
 
+// 할일 목록 선언
 let todoItems: Todo[];
 
-// api
+// 할일 api 불러오기
 function fetchTodoItems(): Todo[] {
   const todos = [
-    { id: 1, title: '안녕', done: false },
-    { id: 2, title: '타입', done: false },
-    { id: 3, title: '스크립트', done: false },
+    { id: 1, title: "영화보기", done: false },
+    { id: 2, title: "스크립트", done: false },
+    { id: 3, title: "와이어프레임 작성", done: false },
   ];
   return todos;
 }
 
-// crud methods
+// 할일 crud
 function fetchTodos(): object[] {
   const todos = fetchTodoItems();
   return todos;
@@ -41,32 +37,33 @@ function completeTodo(index: number, todo: Todo): void {
   todoItems.splice(index, 1, todo);
 }
 
-// business logic
+// 첫번째 할일아이템 보여주기
 function logFirstTodo(): object {
   return todoItems[0];
 }
 
+// 완료된 할일아이템 보여주기
 function showCompleted(): object[] {
   return todoItems.filter(item => item.done);
 }
 
-// TODO: 아래 함수의 내용을 채워보세요. 아래 함수는 `addTodo()` 함수를 이용하여 2개의 새 할 일을 추가하는 함수입니다.
+// 2개의 할일아이템 추가
 function addTwoTodoItems(): void {
-  // addTodo() 함수를 두 번 호출하여 todoItems에 새 할 일이 2개 추가되어야 합니다.
   const item1 = {
     id: 4,
-    title: '투두아이템 4',
+    title: "투두아이템 4",
     done: false,
   };
+  const item2 = {
+      id: 5,
+      title: "투두아이템 5",
+      done: false,
+  };
   addTodo(item1);
-  addTodo({
-    id: 5,
-    title: '투두아이템 5',
-    done: false,
-  });
+  addTodo(item2);
 }
 
-// NOTE: 유틸 함수
+// 유틸함수
 function log(): void {
   console.log(todoItems);
 }
